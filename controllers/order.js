@@ -1,7 +1,7 @@
 const axios = require("axios")
 
-const apikey = process.env.SHOPIFY_API_KEY
-const password = process.env.SHOPIFY_PASSWORD
+const apikey = "2a0cf61ad8c5d786469dac35acd5d676"
+const password = "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"
 
 exports.getOrders = (req, res) => {
   axios({
