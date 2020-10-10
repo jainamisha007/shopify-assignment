@@ -69,6 +69,9 @@ li a:hover:not(.active) {
       <tr>
         <th>OrderID</th>
         <th>Shipping Details</th>
+        <th>Payment Status</th>
+        <th>Fulfillment Status</th>
+        <th>Return Status</th>
       </tr>
       <% for(var i = 0; i < data.length; i++) { %>
       <tr>
@@ -76,6 +79,9 @@ li a:hover:not(.active) {
         <th>
           <%= data[i].shipping_address.first_name %> <%= data[i].shipping_address.last_name %>, <%= data[i].shipping_address.address1 %>, <%= data[i].shipping_address.city %> <%= data[i].shipping_address.zip%>
         </th>
+        <th><%= data[i].financial_status%></th>
+        <th><%= data[i].fulfillment_status %></th>
+        <th><%= data[i].cancelled_reason %></th>
       </tr>
       <% } %>
     </table>
