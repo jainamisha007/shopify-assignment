@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= data[0].vendor %></title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+ </head>
+<style>
+  body {
+    background-color: black;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    color: white;
+    text-align: center;
+  }
+  th {
+    height: 50px;
+  }
+  table, th, td {
+    border: 1px solid white;
+  }
+  th, td {
+    padding: 10px;
+    font-style: normal;
+  }
+  del {
+    text-decoration: line-through;
+  }
+  .text {
+    text-align: left;
+  }
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  li {
+    float: inline-start;
+  }
+  li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+  color: yellow;
+}
+
+.active {
+  background-color:rebeccapurple;
+}
+
+</style>
+<body>
+  <div>
+    <ul>
+      <li class="active"><a href="/product">Products </a></li>   |
+      <li><a href="/order">Orders</a></li> 
+    </ul>
+  </div>
+  <br>
+  <div class="container">
+    <table style="width:100%">
+      <tr>
+        <th>Product</th>
+        <th>Description</th>
+        <th>Image</th>
+      </tr>
+      <% for(var i = 0; i < data.length; i++) { %>
+      <tr class="text">
+        <th> <%= data[i].title %> </th>
+        <th>
+          <%= data[i].body_html %>
+          <!-- newline -->
+          <br>
+          <br>
+           <i style="font-stretch: expanded;" > <%= data[i].variants[0].inventory_quantity %> stocks left!</i>
+        </th>
+        <th>
+          <img width="400" height="400" class="img-fluid" src= <%= data[i].image.src %> />
+          <del>&#8377;<%= data[i].variants[0].compare_at_price %></del> &#8377;<%= data[i].variants[0].price %>
+        </th>
+      </tr>
+      <% } %>
+    </table>
+  </div>
+</body>
+</html>
