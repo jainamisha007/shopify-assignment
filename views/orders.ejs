@@ -74,14 +74,27 @@ li a:hover:not(.active) {
         <th>Return Status</th>
       </tr>
       <% for(var i = 0; i < data.length; i++) { %>
+        <% console.log(data) %>
       <tr>
         <th> <%= data[i].id %> </th>
         <th>
           <%= data[i].shipping_address.first_name %> <%= data[i].shipping_address.last_name %>, <%= data[i].shipping_address.address1 %>, <%= data[i].shipping_address.city %> <%= data[i].shipping_address.zip%>
         </th>
         <th><%= data[i].financial_status%></th>
-        <th><%= data[i].fulfillment_status %></th>
-        <th><%= data[i].cancelled_reason %></th>
+        <th>
+          <% if (data[i].fulfillment_status != null) { %>
+            <%= data[i].fulfillment_status %>
+          <% } else { %>
+            <p style="text-align: center;">-</p>
+          <% }%>
+        </th>
+        <th>
+          <% if (data[i].cancelled_at != null) { %>
+            Cancelled - <%= data[i].cancel_reason %>
+          <% } else { %>
+            <p style="text-align: center;">-</p>
+          <% } %>
+        </th>
       </tr>
       <% } %>
     </table>
